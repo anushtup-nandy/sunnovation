@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunnovation: Maximize Your Solar Potential</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Sunnovation</div>
+            <ul class="nav-links">
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero">
+            <h2>Power smarter, save greener – Sunnovation is here.</h2>
+            <p>At Sunnovation, we’re turning rooftops into powerhouses. Our app doesn’t just place solar panels—it transforms them into efficiency machines. With cutting-edge tech like AR optimization and real-time energy predictions, we’re changing the way people think about solar energy.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="window.location.href='contact.html'">Start Your Solar Savings Journey</button>
+                <button class="btn-secondary" onclick="showSavingsCalculator()">Calculate Savings</button>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="overview">
+        <div class="container">
+            <h2>Revolutionizing Solar Energy</h2>
+            <p>Sunnovation is a revolutionary platform that empowers homeowners and businesses to make the most of their solar investments. Our advanced technology analyzes your roof, predicts energy generation, and provides a customized plan for maximum efficiency and savings.</p>
+            <div class="features-highlight">
+                <div class="feature">
+                    <img src="images/icon-placement.svg" alt="Optimal Placement Icon">
+                    <h3>Optimal Placement</h3>
+                    <p>AI-powered rooftop analysis for ideal panel positioning.</p>
+                </div>
+                <div class="feature">
+                    <img src="images/icon-prediction.svg" alt="Energy Prediction Icon">
+                    <h3>Energy Prediction</h3>
+                    <p>Accurate daily forecasts based on real-time weather data.</p>
+                </div>
+                <div class="feature">
+                    <img src="images/icon-financial.svg" alt="Financial Insights Icon">
+                    <h3>Financial Insights</h3>
+                    <p>Calculate ROI, payback period, and potential savings.</p>
+                </div>
+                <div class="feature">
+                    <img src="images/icon-3d.svg" alt="3D Visualization Icon">
+                    <h3>3D Visualization</h3>
+                    <p>Interactive model of your roof with optimal panel layout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="impact-metrics">
+    <div class="container">
+        <h2>Our Impact</h2>
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value" id="energy-increase">25%</div>
+                <div class="metric-label">More Energy</div>
+                <div class="metric-description">Optimize your rooftop for maximum capture.</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="cost-savings">10-20%</div>
+                <div class="metric-label">Cost Savings</div>
+                <div class="metric-description">Smart insights mean smarter investments.</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="carbon-offset">3-4 tons</div>
+                <div class="metric-label">Carbon Offset</div>
+                <div class="metric-description">Reduce your footprint annually.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <p>© 2023 Sunnovation. All rights reserved.</p>
+    </footer>
+    <div id="savings-calculator" style="display: none;">
+    <h3>Savings Calculator</h3>
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location"><br><br>
+    <label for="rooftop-size">Rooftop Size (sq ft):</label>
+    <input type="number" id="rooftop-size" name="rooftop-size"><br><br>
+    <button onclick="calculateSavings()">Calculate</button>
+    <div id="calculation-result"></div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
