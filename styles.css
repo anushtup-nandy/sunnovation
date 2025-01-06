@@ -1,16 +1,54 @@
-/* Variables for easy color and font management */
-:root {
-    --primary-yellow: #FFD700;
-    --primary-blue: #004AAD;
-    --secondary-light-gray: #F8F8F8;
-    --secondary-dark-gray: #4A4A4A;
-    --accent-blue: #007bff;
+/* styles.css - Sunnovation Website Styles */
 
-    --heading-font: 'Poppins', sans-serif;
-    --body-font: 'Open Sans', sans-serif;
+/* --------------------------------------------------------- */
+/* Color Palette & Variables */
+/* --------------------------------------------------------- */
+
+:root {
+    /* Primary Colors */
+    --primary-solar-yellow: #FFA500; /* Brighter, more energetic yellow */
+    --primary-deep-blue: #003366;   /* Darker, more professional blue */
+
+    /* Secondary Colors */
+    --secondary-light-gray: #F5F5F5; /* Very light gray for backgrounds */
+    --secondary-medium-gray: #E0E0E0; /* Slightly darker gray for contrast */
+    --secondary-dark-gray: #616161;  /* Dark gray for text and accents */
+
+    /* Accent Colors */
+    --accent-bright-blue: #007BFF;   /* Vibrant blue for CTAs */
+    --accent-green: #4CAF50;       /* Green for success/positive indicators */
+
+    /* Neutral Colors */
+    --white: #FFFFFF;
+    --black: #000000;
+
+    /* Gradient Colors */
+    --gradient-start: var(--primary-solar-yellow);
+    --gradient-end: var(--primary-deep-blue);
+
+    /* Typography */
+    --heading-font: 'Poppins', sans-serif; /* Modern, bold sans-serif */
+    --body-font: 'Open Sans', sans-serif; /* Highly readable sans-serif */
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-s: 1rem;
+    --space-m: 1.5rem;
+    --space-l: 2rem;
+    --space-xl: 3rem;
+    --space-xxl: 4rem;
+
+    /* Shadows */
+    --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-large: 0 6px 12px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Basic Reset */
+/* --------------------------------------------------------- */
+/* Basic Reset & Global Styles */
+/* --------------------------------------------------------- */
+
 * {
     margin: 0;
     padding: 0;
@@ -28,47 +66,82 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
-    padding: 0 20px;
+    padding: 0 var(--space-s);
 }
 
+/* --------------------------------------------------------- */
+/* Typography */
+/* --------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    color: var(--primary-deep-blue);
+    line-height: 1.2;
+    margin-bottom: var(--space-s);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: var(--space-m);
+    line-height: 1.7;
+}
+
+a {
+    color: var(--accent-bright-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-deep-blue);
+}
+
+/* --------------------------------------------------------- */
 /* Header */
+/* --------------------------------------------------------- */
+
 header {
-    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-blue));
-    color: #fff;
-    padding: 1rem 0;
-    position: relative; /* For potential use with animations or sticky nav */
-    z-index: 10; /* Ensure header stays on top */
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--white);
+    padding: var(--space-s) 0;
+    position: relative;
+    z-index: 10;
 }
 
 nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 var(--space-s);
 }
 
 .logo {
     font-weight: 800;
     font-size: 2rem;
     font-family: var(--heading-font);
-    color: white;
+    color: var(--white);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* For mobile menu transitions */
 }
 
 .nav-links li {
-    padding: 0 25px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0 var(--space-m);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover effect */
 }
 
 .nav-links a {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
@@ -79,19 +152,27 @@ nav {
     transform: translateY(-3px);
 }
 
+.nav-links a:hover {
+    color: var(--secondary-light-gray);
+}
+
+/* --------------------------------------------------------- */
 /* Hero Section */
+/* --------------------------------------------------------- */
+
 .hero {
-    background: url("images/solar-panel-pattern.png");
+    background: url("images/solar-panel-pattern.png"); /* Use a subtle pattern */
     background-size: cover;
     background-position: center;
-    color: #fff;
+    color: var(--white);
     text-align: center;
-    padding: 4rem 0;
+    padding: var(--space-xxl) 0;
     position: relative;
 }
+
 .hero h2 {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
     font-family: var(--heading-font);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     line-height: 1.2;
@@ -99,7 +180,7 @@ nav {
 
 .hero p {
     font-size: 1.3rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-l);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -109,55 +190,61 @@ nav {
 .cta-buttons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: var(--space-m);
 }
 
-.btn-primary, .btn-secondary {
-    padding: 1rem 2rem;
-    margin: 0; /* Reset default margin */
+.btn-primary,
+.btn-secondary {
+    padding: var(--space-m) var(--space-xl);
     border: none;
-    border-radius: 30px;
+    border-radius: 30px; /* Rounded buttons */
     cursor: pointer;
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-subtle);
 }
 
 .btn-primary {
-    background-color: var(--accent-blue);
-    color: #fff;
+    background-color: var(--accent-bright-blue);
+    color: var(--white);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
+    color: var(--white);
+    border: 2px solid var(--white);
 }
 
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-hover);
 }
 
+.btn-primary:hover {
+    background-color: var(--primary-deep-blue);
+}
+
+/* --------------------------------------------------------- */
 /* Overview Section */
+/* --------------------------------------------------------- */
+
 .overview {
-    background-color: #fff;
-    padding: 4rem 0;
+    background-color: var(--white);
+    padding: var(--space-xxl) 0;
 }
 
 .overview h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-l);
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .overview p {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     font-size: 1.1rem;
     line-height: 1.7;
 }
@@ -165,184 +252,187 @@ nav {
 .features-highlight {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: var(--space-l);
 }
 
 .feature {
-    padding: 2rem;
+    padding: var(--space-l);
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
     background-color: var(--secondary-light-gray);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .feature img {
     width: auto;
     height: 120px;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
 }
 
 .feature h3 {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
     font-size: 1.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .feature p {
     font-size: 1rem;
     line-height: 1.6;
 }
+
+/* --------------------------------------------------------- */
 /* Impact Metrics */
+/* --------------------------------------------------------- */
+
 .impact-metrics {
     background-color: var(--secondary-light-gray);
-    padding: 4rem 0;
+    padding: var(--space-xxl) 0;
     text-align: center;
 }
 
 .impact-metrics h2 {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .metrics {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: var(--space-l);
 }
 
 .metric {
     flex: 1;
-    padding: 2rem;
+    padding: var(--space-l);
     min-width: 200px;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .metric:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .metric-value {
     font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-yellow);
+    color: var(--primary-solar-yellow);
     font-family: var(--heading-font);
 }
 
 .metric-label {
     font-weight: 600;
     font-size: 1.2rem;
-    margin-top: 0.5rem;
-    color: var(--primary-blue);
+    margin-top: var(--space-s);
+    color: var(--primary-deep-blue);
 }
 
 .metric-description {
     font-size: 1rem;
     line-height: 1.6;
-    margin-top: 1rem;
+    margin-top: var(--space-m);
 }
 
+/* --------------------------------------------------------- */
 /* Savings Calculator */
+/* --------------------------------------------------------- */
+
 #savings-calculator {
-    padding: 2rem;
-    border: 1px solid #ccc;
+    padding: var(--space-l);
+    border: 1px solid var(--secondary-medium-gray);
     border-radius: 10px;
-    margin-top: 3rem;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: var(--space-xl);
+    background-color: var(--white);
+    box-shadow: var(--shadow-subtle);
 }
 
 #savings-calculator h3 {
     font-size: 1.8rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 1.5rem;
+    color: var(--primary-deep-blue);
+    margin-bottom: var(--space-m);
 }
 
 #savings-calculator label {
     display: block;
-    margin-top: 1rem;
+    margin-top: var(--space-m);
     font-weight: 600;
 }
 
 #savings-calculator input[type="text"],
 #savings-calculator input[type="number"] {
     width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    border: 1px solid #ccc;
+    padding: var(--space-s);
+    margin-top: var(--space-s);
+    border: 1px solid var(--secondary-medium-gray);
     border-radius: 5px;
     font-size: 1rem;
 }
 
 #savings-calculator button {
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
-    background-color: var(--accent-blue);
-    color: white;
+    margin-top: var(--space-m);
+    padding: var(--space-m) var(--space-xl);
+    background-color: var(--accent-bright-blue);
+    color: var(--white);
     border: none;
     border-radius: 30px;
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-subtle);
 }
 
 #savings-calculator button:hover {
-    background-color: darken(var(--accent-blue), 10%);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-deep-blue);
+    box-shadow: var(--shadow-hover);
     transform: translateY(-2px);
 }
 
 #calculation-result {
-    margin-top: 2rem;
+    margin-top: var(--space-l);
     font-weight: bold;
     font-size: 1.2rem;
 }
+
+/* --------------------------------------------------------- */
 /* About Us Section */
+/* --------------------------------------------------------- */
+
 .about-us {
-    padding: 4rem 0;
-    background-color: #fff;
+    padding: var(--space-xxl) 0;
+    background-color: var(--white);
 }
 
 .about-us .container {
     display: grid;
-    gap: 3rem;
+    gap: var(--space-xl);
 }
 
 .about-us h2 {
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
     text-align: center;
 }
 
-.about-us .mission, .about-us .story {
+.about-us .mission,
+.about-us .story {
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
+    padding: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
 }
 
 .about-us h3 {
     font-size: 1.8rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
 }
 
 .about-us p {
@@ -357,25 +447,25 @@ nav {
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: var(--space-l);
     justify-content: center;
 }
 
 .team-member {
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
+    padding: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-member:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .team-member .image-container {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-m);
 }
 
 .team-member img {
@@ -383,14 +473,12 @@ nav {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--primary-yellow);
+    border: 3px solid var(--primary-solar-yellow);
 }
 
 .team-member h4 {
     font-size: 1.3rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-s);
 }
 
 .team-member p {
@@ -398,39 +486,38 @@ nav {
     line-height: 1.5;
 }
 
-/* Solutions Page Styles */
+/* --------------------------------------------------------- */
+/* Solutions */
+/* --------------------------------------------------------- */
+
 .solutions {
-    padding: 4rem 0;
-    background-color: #fff;
+    padding: var(--space-xxl) 0;
+    background-color: var(--white);
 }
 
 .solutions h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .solution-item {
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: var(--space-l);
+    margin-bottom: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .solution-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .solution-item h3 {
     font-size: 1.8rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
 }
 
 .solution-item p {
@@ -440,16 +527,14 @@ nav {
 
 .interactive-features {
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
+    padding: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
 }
 
 .interactive-features h3 {
     font-size: 1.8rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
 }
 
 .interactive-features p {
@@ -457,26 +542,27 @@ nav {
     line-height: 1.7;
 }
 
-/* Product Page Styles */
+/* --------------------------------------------------------- */
+/* Product */
+/* --------------------------------------------------------- */
+
 .product {
-    padding: 4rem 0;
-    background-color: #fff;
+    padding: var(--space-xxl) 0;
+    background-color: var(--white);
 }
 
 .product h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .steps {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: var(--space-l);
 }
 
 .step {
@@ -487,9 +573,7 @@ nav {
 
 .step h3 {
     font-size: 1.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
 }
 
 .step p {
@@ -499,16 +583,14 @@ nav {
 
 .different {
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
+    padding: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
 }
 
 .different h3 {
     font-size: 1.8rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-m);
 }
 
 .different ul {
@@ -519,36 +601,37 @@ nav {
 .different li {
     font-size: 1.1rem;
     line-height: 1.7;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-s);
 }
 
-/* Testimonials Page Styles */
+/* --------------------------------------------------------- */
+/* Testimonials */
+/* --------------------------------------------------------- */
+
 .testimonials {
-    padding: 4rem 0;
-    background-color: #fff;
+    padding: var(--space-xxl) 0;
+    background-color: var(--white);
 }
 
 .testimonials h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .testimonial-item {
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: var(--space-l);
+    margin-bottom: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .testimonial-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-medium);
 }
 
 .testimonial-item p {
@@ -557,37 +640,38 @@ nav {
     font-style: italic;
 }
 
-/* Contact Us Page Styles */
+/* --------------------------------------------------------- */
+/* Contact */
+/* --------------------------------------------------------- */
+
 .contact {
-    padding: 4rem 0;
-    background-color: #fff;
+    padding: var(--space-xxl) 0;
+    background-color: var(--white);
 }
 
 .contact h2 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-s);
     font-size: 2.5rem;
-    font-family: var(--heading-font);
-    color: var(--primary-blue);
 }
 
 .contact p {
     text-align: center;
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-l);
 }
 
 .contact form {
-    margin-top: 2rem;
+    margin-top: var(--space-l);
     background-color: var(--secondary-light-gray);
-    padding: 2rem;
+    padding: var(--space-l);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-subtle);
 }
 
 .contact label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-s);
     font-weight: 600;
 }
 
@@ -595,9 +679,9 @@ nav {
 .contact input[type="email"],
 .contact textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
+    padding: var(--space-s);
+    margin-bottom: var(--space-m);
+    border: 1px solid var(--secondary-medium-gray);
     border-radius: 5px;
     font-size: 1rem;
 }
@@ -606,15 +690,18 @@ nav {
     min-height: 120px;
 }
 
+/* --------------------------------------------------------- */
 /* Footer */
+/* --------------------------------------------------------- */
+
 footer {
-    background: var(--primary-blue);
-    color: #fff;
+    background: var(--primary-deep-blue);
+    color: var(--white);
     text-align: center;
-    padding: 2rem 0;
+    padding: var(--space-l) 0;
     font-size: 0.9rem;
 }
 
 footer p {
-    margin-bottom: 0; /* Remove default margin */
+    margin-bottom: 0;
 }
