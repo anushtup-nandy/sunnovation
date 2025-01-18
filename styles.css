@@ -705,3 +705,120 @@ footer {
 footer p {
     margin-bottom: 0;
 }
+
+/* --------------------------------------------------------- */
+/* Blog Styles */
+/* --------------------------------------------------------- */
+
+.blog-intro {
+    background-color: var(--secondary-light-gray);
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
+
+.blog-intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-s);
+}
+
+.blog-intro p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-posts {
+    padding: var(--space-xxl) 0;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-l);
+}
+
+.blog-post {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow-subtle);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.blog-post-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.blog-post-content {
+    padding: var(--space-l);
+}
+
+.blog-post-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary-dark-gray);
+    margin-bottom: var(--space-s);
+}
+
+.blog-post-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-s);
+    color: var(--primary-deep-blue);
+}
+
+.blog-post-excerpt {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-m);
+}
+
+.blog-post-read-more {
+    display: inline-block;
+    background-color: var(--accent-bright-blue);
+    color: var(--white);
+    padding: var(--space-s) var(--space-m);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.blog-post-read-more:hover {
+    background-color: var(--primary-deep-blue);
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: var(--space-l) 0;
+}
+
+.pagination li {
+    margin: 0 var(--space-s);
+}
+
+.pagination a {
+    padding: var(--space-s) var(--space-m);
+    border: 1px solid var(--secondary-medium-gray);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--secondary-dark-gray);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: var(--accent-bright-blue);
+    color: var(--white);
+}
+
+.pagination a.active {
+    background-color: var(--primary-deep-blue);
+    color: var(--white);
+    border-color: var(--primary-deep-blue);
+}

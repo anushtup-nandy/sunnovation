@@ -174,7 +174,7 @@ if (contactForm) { // Check if the form exists on the current page
 // ----------------------------------------------------------------------
 
 // Add this if you implement a mobile menu toggle button in your HTML
-/*
+
 const navToggle = document.querySelector('.nav-toggle'); // Add a button with this class in your HTML
 const navLinks = document.querySelector('.nav-links');
 
@@ -183,7 +183,163 @@ if (navToggle) {
         navLinks.classList.toggle('nav-active'); // Add/remove a class to show/hide the menu
     });
 }
-*/
+
+
+// ----------------------------------------------------------------------
+// Blog Functionality
+// ----------------------------------------------------------------------
+
+const blogGrid = document.querySelector('.blog-grid');
+const paginationContainer = document.querySelector('.pagination');
+let currentPage = 1;
+const postsPerPage = 6; // Adjust as needed
+
+// Sample Blog Post Data (replace with your actual blog data)
+const blogPosts = [
+    {
+        title: "The Future of Solar Energy: Trends to Watch in 2024",
+        date: "2024-07-15",
+        excerpt: "Explore the latest advancements in solar technology, including AI-powered optimization, new panel materials, and the integration of solar into smart homes.",
+        imageUrl: "images/blog-future-solar.jpg",
+        content: "...", // Full content of the blog post (HTML)
+        link: "blog-post-1.html" // Link to the individual blog post page
+    },
+    {
+        title: "Maximizing Your Solar ROI with Sunnovation",
+        date: "2024-07-08",
+        excerpt: "Learn how Sunnovation's innovative platform helps homeowners and businesses get the most out of their solar investments through intelligent analytics and optimization.",
+        imageUrl: "images/blog-maximizing-roi.jpg",
+        content: "...",
+        link: "blog-post-2.html"
+    },
+    {
+        title: "Sunnovation's AR Technology: A Game-Changer for Rooftop Solar",
+        date: "2024-07-01",
+        excerpt: "Discover how Sunnovation's cutting-edge augmented reality (AR) features simplify the process of designing and visualizing optimal solar panel layouts.",
+        imageUrl: "images/blog-ar-technology.jpg",
+        content: "...",
+        link: "blog-post-3.html"
+    },
+    {
+        title: "Solar Energy and Sustainability: Making a Positive Impact",
+        date: "2024-06-24",
+        excerpt: "Explore the environmental benefits of solar energy and how Sunnovation is contributing to a more sustainable future.",
+        imageUrl: "images/blog-sustainability.jpg",
+        content: "...",
+        link: "blog-post-4.html"
+    },
+    {
+        title: "Case Study: How Sunnovation Helped a Homeowner Save 30% on Energy Costs",
+        date: "2024-06-17",
+        excerpt: "Read a real-world example of how Sunnovation's platform helped a homeowner optimize their solar panel system and achieve significant cost savings.",
+        imageUrl: "images/blog-case-study.jpg",
+        content: "...",
+        link: "blog-post-5.html"
+    },
+    {
+        title: "The Importance of Accurate Energy Predictions in Solar",
+        date: "2024-06-10",
+        excerpt: "Learn why accurate energy production predictions are crucial for maximizing the value of solar and how Sunnovation's AI algorithms deliver reliable forecasts.",
+        imageUrl: "images/blog-energy-predictions.jpg",
+        content: "...",
+        link: "blog-post-6.html"
+    },
+];
+
+function displayBlogPosts(page) {
+    const startIndex = (page - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    const currentPosts = blogPosts.slice(startIndex, endIndex);
+
+    blogGrid.innerHTML = ''; // Clear previous posts
+
+    currentPosts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.classList.add('blog-post');
+        postElement.innerHTML = `
+            <img src="${post.imageUrl}" alt="${post.title}" class="blog-post-image">
+            <div class="blog-post-content">
+                <span class="blog-post-date">${post.date}</span>
+                <h3 class="blog-post-title">${post.title}</h3>
+                <p class="blog-post-excerpt">${post.excerpt}</p>
+                <a href="${post.link}" class="blog-post-read-more">Read More</a>
+            </div>
+        `;
+        blogGrid.appendChild(postElement);
+    });
+}
+
+function setupPagination() {
+    const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+
+    // Previous button
+    const prevButton = paginationContainer.querySelector('.prev');
+    prevButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (currentPage > 1) {
+            currentPage--;
+            displayBlogPosts(currentPage);
+            updatePagination();
+        }
+    });
+
+    // Next button
+    const nextButton = paginationContainer.querySelector('.next');
+    nextButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayBlogPosts(currentPage);
+            updatePagination();
+        }
+    });
+
+    // Numbered buttons
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('a');
+        pageButton.href = '#';
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            currentPage = i;
+            displayBlogPosts(currentPage);
+            updatePagination();
+        });
+
+        const listItem = document.createElement('li');
+        listItem.appendChild(pageButton);
+        paginationContainer.insertBefore(listItem, nextButton.parentNode); // Insert before the "Next" button
+    }
+
+    updatePagination();
+}
+
+function updatePagination() {
+    const pageLinks = paginationContainer.querySelectorAll('li a:not(.prev):not(.next)');
+    pageLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    if (currentPage > 1) {
+        paginationContainer.querySelector('.prev').classList.remove('disabled');
+    } else {
+        paginationContainer.querySelector('.prev').classList.add('disabled');
+    }
+
+    if (currentPage < pageLinks.length) {
+        paginationContainer.querySelector('.next').classList.remove('disabled');
+    } else {
+        paginationContainer.querySelector('.next').classList.add('disabled');
+    }
+
+    pageLinks[currentPage - 1].classList.add('active');
+}
+
+// Initialize blog functionality
+if (blogGrid) {
+    displayBlogPosts(currentPage);
+    setupPagination();
+}
 
 // ----------------------------------------------------------------------
 // Other Potential Enhancements (Add as needed)
