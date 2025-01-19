@@ -125,49 +125,49 @@ images.forEach(image => {
 // Form Submission Handling (Example - Replace with your actual form handling)
 // ----------------------------------------------------------------------
 
+// Get the contact form element
 const contactForm = document.getElementById('contact-form');
 
-if (contactForm) { // Check if the form exists on the current page
+if (contactForm) {
     contactForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
-        // Get form data (replace with your actual form field IDs)
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
+        // Get form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
 
-        // Basic form validation (add more as needed)
-        if (!name || !email || !message) {
+        // Basic form validation
+        if (!formData.name || !formData.email || !formData.message) {
             alert('Please fill in all fields.');
             return;
         }
 
-        // Example AJAX call to send form data to server (replace with your actual API endpoint)
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('message', message);
-
-        fetch('/submit-form', { // Replace with your form submission endpoint
+        // Send data to server
+        fetch('http://localhost:5000/submit-form', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
         })
-            .then(response => {
-                if (response.ok) {
-                    // Handle successful form submission
-                    alert('Thank you for your message! We will get back to you soon.');
-                    contactForm.reset(); // Clear the form
-                } else {
-                    // Handle errors
-                    alert('There was an error submitting your message. Please try again later.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An unexpected error occurred. Please try again later.');
-            });
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error submitting your message. Please try again later.');
+        });
     });
 }
+
 
 // ----------------------------------------------------------------------
 // Mobile Navigation Menu Toggle (Example)
